@@ -86,6 +86,16 @@ module.exports = function(app) {
     }
   });
 
+  app.get('/api/netease/*',function(req,res){
+    axios.get('http://api.kamikuz.cn:3000/'+ req.params[0],{params: req.query})
+          .then(function(response) {
+            res.send(response.data);
+          })
+          .catch(e =>
+            res.send('{code: 0}')
+          )
+  })
+
   app.get('/netease/follow', function(req, res) {
     if(req.query.uid){
       axios.get("http://api.kamikuz.cn:3000/user/detail",{
@@ -159,7 +169,6 @@ module.exports = function(app) {
   });
 
   app.get('*', function(req, res) {
-    console.log(req.originalUrl);
     let result = {
       "frames": [
         {

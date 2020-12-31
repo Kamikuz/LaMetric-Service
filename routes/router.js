@@ -87,7 +87,7 @@ module.exports = function(app) {
   });
 
   app.get('/api/netease/*',function(req,res){
-    axios.get('http://api.kamikuz.cn:3000/'+ req.params[0],{params: req.query})
+    axios.get('https://api.anmuso.com/netease/'+ req.params[0],{params: req.query})
           .then(function(response) {
             res.send(response.data);
           })
@@ -98,7 +98,7 @@ module.exports = function(app) {
 
   app.get('/netease/follow', function(req, res) {
     if(req.query.uid){
-      axios.get("http://api.kamikuz.cn:3000/user/detail",{
+      axios.get("https://api.anmuso.com/netease/user/detail",{
         params:{
           uid: req.query.uid,
           responseType: 'json'
@@ -134,7 +134,7 @@ module.exports = function(app) {
 
   app.get('/netease/radio', function(req, res) {
     if(req.query.rid){
-      axios.get("http://api.kamikuz.cn:3000/dj/detail",{
+      axios.get("https://api.anmuso.com/netease/dj/detail",{
         params:{
           rid: req.query.rid,
           responseType: 'json'
